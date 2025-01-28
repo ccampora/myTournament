@@ -54,6 +54,7 @@ app.get("/register", (req, res) => {
 
 app.post("/register", (req, res) => {
   const nickname = req.body.nickname || "Player";
+  console.log("Registering:", nickname);
   const fakeSocketId = "web-" + Math.random().toString(36).substr(2, 8);
 
   const assignedTeam = scoreboard.addUser(fakeSocketId, nickname);
@@ -92,6 +93,13 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "lobby.html"));
   }
 });
+
+// Periodic scoreboard updates (every 5 seconds)
+setInterval(() => {
+  const scoreboardView = scoreboard.getScoreboardView(); // Get the current scoreboard
+  io.emit("scoreboardUpdate", scoreboardView); // Emit to all connected clients
+  console.log("Scoreboard refreshed and sent to clients.");
+}, 5000);
 
 // Start server
 const PORT = 3000;

@@ -48,7 +48,6 @@ const scoreboard = {
     getScoreboardView() {
         let players = [];
         let teamTotals = { A: 0, B: 0 };
-
         for (let sid in this.users) {
             const u = this.users[sid];
             players.push({

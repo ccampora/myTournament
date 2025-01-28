@@ -67,8 +67,13 @@
 
 <body>
     <h1>Lobby</h1>
-    <p>No game is active at the moment. Please wait for the Game Master.</p>
+    <p id="lobbyMessage">No game is active at the moment. Please wait for the Game Master.</p>
     <p>If you haven't registered, <a href="/register">Click Here</a>.</p>
+
+    <div id="launchMessage" style="display: none;">
+        Launching a new game in <span id="countdown">10</span> seconds...
+    </div>
+
 
     <div id="scoreboard">
         <h2>Scoreboard</h2>
@@ -80,9 +85,6 @@
                 <thead>
                     <tr>
                         <th>Player</th>
-                        <th>Trivia</th>
-                        <th>Race</th>
-                        <th>2048</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -98,9 +100,6 @@
                 <thead>
                     <tr>
                         <th>Player</th>
-                        <th>Trivia</th>
-                        <th>Race</th>
-                        <th>2048</th>
                         <th>Total</th>
                     </tr>
                 </thead>
@@ -111,78 +110,7 @@
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io(); // connect to main server
-
-        const teamABody = document.getElementById("teamABody");
-        const teamBBody = document.getElementById("teamBBody");
-        const teamATotal = document.getElementById("teamATotal");
-        const teamBTotal = document.getElementById("teamBTotal");
-
-        socket.on("connect", () => {
-            console.log("Connected to main server:", socket.id);
-        });
-
-        socket.on("scoreboardUpdate", (data) => {
-            // data = { players: [...], teamTotals: { A, B } }
-            renderScoreboard(data);
-        });
-
-        function renderScoreboard(data) {
-            const { players, teamTotals } = data;
-
-            // Clear old rows
-            teamABody.innerHTML = "";
-            teamBBody.innerHTML = "";
-
-            // Set team totals
-            teamATotal.textContent = teamTotals.A;
-            teamBTotal.textContent = teamTotals.B;
-
-            // Separate players by team
-            const aPlayers = players.filter(p => p.team === "A");
-            const bPlayers = players.filter(p => p.team === "B");
-
-            // Render Team A
-            if (aPlayers.length === 0) {
-                // If no players, we can do a single-row table saying "No players yet"
-                let row = document.createElement("tr");
-                row.innerHTML = `<td colspan="5" class="no-players">No players yet</td>`;
-                teamABody.appendChild(row);
-            } else {
-                aPlayers.forEach((p) => {
-                    let row = document.createElement("tr");
-                    row.innerHTML = `
-            <td>${p.username}</td>
-            <td>${p.gameScores.trivia || 0}</td>
-            <td>${p.gameScores.race || 0}</td>
-            <td>${p.gameScores["2048"] || 0}</td>
-            <td>${p.totalScore}</td>
-          `;
-                    teamABody.appendChild(row);
-                });
-            }
-
-            // Render Team B
-            if (bPlayers.length === 0) {
-                let row = document.createElement("tr");
-                row.innerHTML = `<td colspan="5" class="no-players">No players yet</td>`;
-                teamBBody.appendChild(row);
-            } else {
-                bPlayers.forEach((p) => {
-                    let row = document.createElement("tr");
-                    row.innerHTML = `
-            <td>${p.username}</td>
-            <td>${p.gameScores.trivia || 0}</td>
-            <td>${p.gameScores.race || 0}</td>
-            <td>${p.gameScores["2048"] || 0}</td>
-            <td>${p.totalScore}</td>
-          `;
-                    teamBBody.appendChild(row);
-                });
-            }
-        }
-    </script>
+    <script src="/public/lobby.js"></script>
 </body>
 
 </html>
