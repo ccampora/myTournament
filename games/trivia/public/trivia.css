@@ -1,0 +1,32 @@
+/* File: games/trivia/public/trivia.css */
+body {
+    font-family: sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#answers {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+#answers li {
+    background: #fff;
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#message {
+    text-align: center;
+    color: #d9534f;
+    font-weight: bold;
+}

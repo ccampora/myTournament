@@ -1,0 +1,22 @@
+<!-- File: games/trivia/public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="trivia.css">
+</head>
+
+<body>
+    <h1>Trivia Game</h1>
+    <div id="question"></div>
+    <ul id="answers"></ul>
+    <div id="message"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Note the namespace: /trivia-namespace -->
+    <script src="trivia.js"></script>
+</body>
+
+</html>

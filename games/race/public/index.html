@@ -1,0 +1,25 @@
+<!-- File: games/race/public/race.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team Race</title>
+    <link rel="stylesheet" href="race.css">
+</head>
+
+<body>
+    <h1>Team Race</h1>
+    <div id="teamScores">
+        <p>Team A Score: <span id="teamAScore">0</span></p>
+        <p>Team B Score: <span id="teamBScore">0</span></p>
+    </div>
+    <div id="gameArea">
+        <!-- Some 2D canvas or placeholders for cars, etc. -->
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="race.js"></script>
+</body>
+
+</html>

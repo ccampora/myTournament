@@ -1,0 +1,24 @@
+/* File: games/race/public/race.css */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+}
+
+#teamScores {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#gameArea {
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid #ccc;
+}

@@ -1,0 +1,216 @@
+{
+    "questions": [
+        {
+            "id": "Q1",
+            "type": "multiple_choice",
+            "questionText": "Which is NOT a programming language?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "Python"
+                },
+                {
+                    "option": "B",
+                    "text": "Java"
+                },
+                {
+                    "option": "C",
+                    "text": "HTML"
+                }
+            ],
+            "correctAnswer": "C"
+        },
+        {
+            "id": "Q2",
+            "type": "text_input",
+            "questionText": "Which planet is known as the Red Planet?",
+            "correctAnswer": "Mars"
+        },
+        {
+            "id": "Q3",
+            "type": "multiple_choice",
+            "questionText": "Which planet is the largest in our Solar System?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "Earth"
+                },
+                {
+                    "option": "B",
+                    "text": "Saturn"
+                },
+                {
+                    "option": "C",
+                    "text": "Jupiter"
+                },
+                {
+                    "option": "D",
+                    "text": "Neptune"
+                }
+            ],
+            "correctAnswer": "C"
+        },
+        {
+            "id": "Q4",
+            "type": "multiple_choice",
+            "questionText": "Which of the following is a NoSQL database?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "MySQL"
+                },
+                {
+                    "option": "B",
+                    "text": "PostgreSQL"
+                },
+                {
+                    "option": "C",
+                    "text": "Oracle"
+                },
+                {
+                    "option": "D",
+                    "text": "MongoDB"
+                }
+            ],
+            "correctAnswer": "D"
+        },
+        {
+            "id": "Q5",
+            "type": "text_input",
+            "questionText": "In Tolkien's Middle-earth, what is the name of the 'One Ring'?",
+            "correctAnswer": "The One Ring"
+        },
+        {
+            "id": "Q6",
+            "type": "multiple_choice",
+            "questionText": "In Star Wars, what color was Luke Skywalker's first lightsaber?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "Red"
+                },
+                {
+                    "option": "B",
+                    "text": "Blue"
+                },
+                {
+                    "option": "C",
+                    "text": "Green"
+                },
+                {
+                    "option": "D",
+                    "text": "Purple"
+                }
+            ],
+            "correctAnswer": "B"
+        },
+        {
+            "id": "Q7",
+            "type": "multiple_choice",
+            "questionText": "Which year was Windows 95 released?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "1995"
+                },
+                {
+                    "option": "B",
+                    "text": "1990"
+                },
+                {
+                    "option": "C",
+                    "text": "1998"
+                },
+                {
+                    "option": "D",
+                    "text": "2000"
+                }
+            ],
+            "correctAnswer": "A"
+        },
+        {
+            "id": "Q8",
+            "type": "text_input",
+            "questionText": "What does 'RAM' stand for in computing?",
+            "correctAnswer": "Random Access Memory"
+        },
+        {
+            "id": "Q9",
+            "type": "multiple_choice",
+            "questionText": "Which year was the programming language Python first released publicly?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "1991"
+                },
+                {
+                    "option": "B",
+                    "text": "1989"
+                },
+                {
+                    "option": "C",
+                    "text": "1995"
+                },
+                {
+                    "option": "D",
+                    "text": "2000"
+                }
+            ],
+            "correctAnswer": "A"
+        },
+        {
+            "id": "Q10",
+            "type": "multiple_choice",
+            "questionText": "Which component stores BIOS settings on a typical PC motherboard?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "CPU register"
+                },
+                {
+                    "option": "B",
+                    "text": "CMOS battery/CMOS chip"
+                },
+                {
+                    "option": "C",
+                    "text": "Hard drive"
+                },
+                {
+                    "option": "D",
+                    "text": "GPU VRAM"
+                }
+            ],
+            "correctAnswer": "B"
+        },
+        {
+            "id": "Q11",
+            "type": "text_input",
+            "questionText": "What keyword is used in Java to create a new object instance?",
+            "correctAnswer": "new"
+        },
+        {
+            "id": "Q12",
+            "type": "multiple_choice",
+            "questionText": "Which piece of code would print 'Hello World' in Java?",
+            "possibleAnswers": [
+                {
+                    "option": "A",
+                    "text": "System.out.print('Hello World');"
+                },
+                {
+                    "option": "B",
+                    "text": "Console.WriteLine('Hello World');"
+                },
+                {
+                    "option": "C",
+                    "text": "print('Hello World')"
+                },
+                {
+                    "option": "D",
+                    "text": "echo 'Hello World';"
+                }
+            ],
+            "correctAnswer": "A"
+        }
+    ]
+}

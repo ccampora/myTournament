@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Coordinated Quiz with Timeouts</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1>Coordinated Trivia</h1>
+
+    <!-- Registration -->
+    <section id="registration">
+        <h2>Register</h2>
+        <input type="text" id="usernameInput" placeholder="Enter your username" />
+        <button id="registerBtn">Register</button>
+    </section>
+
+    <!-- Main Container (Quiz + Scoreboard), hidden until registration -->
+    <div id="mainContainer" class="hidden">
+        <!-- Left: Quiz Area -->
+        <section id="quizArea">
+            <h2 id="questionText">Loading question...</h2>
+
+            <div>
+                <strong>Time Left:</strong>
+                <span id="timeLeftDisplay">--</span> seconds
+            </div>
+
+            <div id="answers"></div>
+            <div id="status"></div> <!-- For success/fail/timeout messages -->
+        </section>
+
+        <!-- Right: Scoreboard -->
+        <aside id="scoreArea">
+            <h2>Scoreboard</h2>
+            <div id="scoreList"></div>
+        </aside>
+    </div>
+
+    <!-- Start Over -->
+    <button id="startOverBtn">Start Over</button>
+
+    <!-- Socket.io Library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Client Logic -->
+    <script src="client.js"></script>
+</body>
+
+</html>

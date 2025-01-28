@@ -1,0 +1,25 @@
+<!-- File: admin/admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <h1>Admin Panel</h1>
+    <div id="controls">
+        <button id="btnLaunchTrivia">Launch Trivia</button>
+        <button id="btnLaunchRace">Launch Race</button>
+        <button id="btnLaunch2048">Launch 2048</button>
+        <button id="btnStopGame">Stop Game</button>
+        <p id="status"></p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>

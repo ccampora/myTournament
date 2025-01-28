@@ -1,0 +1,9 @@
+{
+    "timeOutMessages": [
+        "Time out. Type faster next time!",
+        "Oops, you were too slow!",
+        "Better luck next time, speed matters!",
+        "Tick-tock! Time's up!",
+        "Don't blink or you'll miss it!"
+    ]
+}

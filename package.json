@@ -1,0 +1,13 @@
+{
+  "name": "my-tournament",
+  "version": "1.0.0",
+  "description": "Multi-game tournament with shared scoreboard",
+  "main": "mainServer.js",
+  "scripts": {
+    "start": "node mainServer.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4"
+  }
+}

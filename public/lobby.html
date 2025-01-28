@@ -1,0 +1,188 @@
+<!-- File: public/lobby.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lobby</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #scoreboard {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .team-section {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .team-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .team-total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        .no-players {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lobby</h1>
+    <p>No game is active at the moment. Please wait for the Game Master.</p>
+    <p>If you haven't registered, <a href="/register">Click Here</a>.</p>
+
+    <div id="scoreboard">
+        <h2>Scoreboard</h2>
+
+        <!-- Team A -->
+        <div class="team-section" id="teamASection">
+            <div class="team-header">Team A</div>
+            <table id="teamATable">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Trivia</th>
+                        <th>Race</th>
+                        <th>2048</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="teamABody"></tbody>
+            </table>
+            <div class="team-total">Team A Total: <span id="teamATotal">0</span></div>
+        </div>
+
+        <!-- Team B -->
+        <div class="team-section" id="teamBSection">
+            <div class="team-header">Team B</div>
+            <table id="teamBTable">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Trivia</th>
+                        <th>Race</th>
+                        <th>2048</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="teamBBody"></tbody>
+            </table>
+            <div class="team-total">Team B Total: <span id="teamBTotal">0</span></div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io(); // connect to main server
+
+        const teamABody = document.getElementById("teamABody");
+        const teamBBody = document.getElementById("teamBBody");
+        const teamATotal = document.getElementById("teamATotal");
+        const teamBTotal = document.getElementById("teamBTotal");
+
+        socket.on("connect", () => {
+            console.log("Connected to main server:", socket.id);
+        });
+
+        socket.on("scoreboardUpdate", (data) => {
+            // data = { players: [...], teamTotals: { A, B } }
+            renderScoreboard(data);
+        });
+
+        function renderScoreboard(data) {
+            const { players, teamTotals } = data;
+
+            // Clear old rows
+            teamABody.innerHTML = "";
+            teamBBody.innerHTML = "";
+
+            // Set team totals
+            teamATotal.textContent = teamTotals.A;
+            teamBTotal.textContent = teamTotals.B;
+
+            // Separate players by team
+            const aPlayers = players.filter(p => p.team === "A");
+            const bPlayers = players.filter(p => p.team === "B");
+
+            // Render Team A
+            if (aPlayers.length === 0) {
+                // If no players, we can do a single-row table saying "No players yet"
+                let row = document.createElement("tr");
+                row.innerHTML = `<td colspan="5" class="no-players">No players yet</td>`;
+                teamABody.appendChild(row);
+            } else {
+                aPlayers.forEach((p) => {
+                    let row = document.createElement("tr");
+                    row.innerHTML = `
+            <td>${p.username}</td>
+            <td>${p.gameScores.trivia || 0}</td>
+            <td>${p.gameScores.race || 0}</td>
+            <td>${p.gameScores["2048"] || 0}</td>
+            <td>${p.totalScore}</td>
+          `;
+                    teamABody.appendChild(row);
+                });
+            }
+
+            // Render Team B
+            if (bPlayers.length === 0) {
+                let row = document.createElement("tr");
+                row.innerHTML = `<td colspan="5" class="no-players">No players yet</td>`;
+                teamBBody.appendChild(row);
+            } else {
+                bPlayers.forEach((p) => {
+                    let row = document.createElement("tr");
+                    row.innerHTML = `
+            <td>${p.username}</td>
+            <td>${p.gameScores.trivia || 0}</td>
+            <td>${p.gameScores.race || 0}</td>
+            <td>${p.gameScores["2048"] || 0}</td>
+            <td>${p.totalScore}</td>
+          `;
+                    teamBBody.appendChild(row);
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
